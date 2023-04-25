@@ -1,0 +1,87 @@
+from django.urls import path
+from arbitrage.api import views as api_views
+
+app_name = "bitcoin_arbitrage"
+
+urlpatterns = [
+    path(
+        route="inter-exchange-realtime",
+        view=api_views.InterSpread.as_view(),
+        name="tri_spread",
+    ),
+    path(
+        route="triangular-exchange-realtime",
+        view=api_views.TriSpread.as_view(),
+        name="tri_spread",
+    ),
+    path(
+        route="triangular-monitor",
+        view=api_views.TriangularMonitor.as_view(),
+        name="triangular_monitor",
+    ),
+    path(
+        route="inter-exchange-monitor",
+        view=api_views.InterExchangeMonitor.as_view(),
+        name="inter_exchange_monitor",
+    ),
+    path(
+        route="historical-data-retrieval",
+        view=api_views.ExchangeHistoricalDataView.as_view(),
+        name="exchange_historical_data",
+    ),
+    path(
+        route="feed_exchange_list_exchanges",
+        view=api_views.FeedExchangeListExchanges.as_view(),
+        name="feed_exchange_list_exchanges",
+    ),
+    path(
+        route="feed_exchange_list_trade_pairs",
+        view=api_views.FeedExchangeListTradePairs.as_view(),
+        name="feed_exchange_list_trade_pairs",
+    ),
+    path(
+        route="feed_exchange_list_general_trade_pair_ohlcv",
+        view=api_views.FeedExchangeListGeneralTradePairOHLCV.as_view(),
+        name="feed_exchange_list_general_trade_pair_ohlcv",
+    ),
+    path(
+        route="feed_exchange_list_exchange_trade_pair_ohlcv",
+        view=api_views.FeedExchangeListExchangeTradePairOHLCV.as_view(),
+        name="feed_exchange_list_exchange_trade_pair_ohlcv",
+    ),
+    path(
+        route="hummingbot_start",
+        view=api_views.HummingbotStart.as_view(),
+        name="hummingbot_start",
+    ),
+    path(
+        route="hummingbot_status",
+        view=api_views.HummingbotStatus.as_view(),
+        name="hummingbot_status",
+    ),
+    path(
+        route="hummingbot_interexchange_arbitrage",
+        view=api_views.HummingbotInterexchangeArbitrage.as_view(),
+        name="hummingbot_interexchange_arbitrage",
+    ),
+    path(
+        route="hummingbot_triangular_arbitrage",
+        view=api_views.HummingbotTriangularArbitrage.as_view(),
+        name="hummingbot_triangular_arbitrage",
+    ),
+    path(
+        route="hummingbot_stop",
+        view=api_views.HummingbotStop.as_view(),
+        name="hummingbot_stop",
+    ),
+    path(
+        route="backtest_v1",
+        view=api_views.BacktestV1.as_view(),
+        name="backtest_v1",
+    ),
+    path(
+        route="backtest_v2",
+        view=api_views.BacktestV2.as_view(),
+        name="backtest_v2",
+    ),
+]
